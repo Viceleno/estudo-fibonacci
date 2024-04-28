@@ -1,4 +1,5 @@
-# [0,1,1,2,3,5,8,13,21,34,55...]
+# posição    [1,2,3,4,5,6,7,8 ,9 ,10,11]
+# resultado  [0,1,1,2,3,5,8,13,21,34,55...]
 
 # # recursiva
 def vi(n):
@@ -31,6 +32,13 @@ def vi_ite(n):
     counter += 1
     
   return vi_corr
+
+
+def calculate_fibonacci(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
 
 
 
