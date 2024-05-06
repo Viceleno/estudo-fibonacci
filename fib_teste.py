@@ -1,6 +1,8 @@
 # posição    [1,2,3,4,5,6,7,8 ,9 ,10,11]
 # resultado  [0,1,1,2,3,5,8,13,21,34,55...]
 
+import time
+
 # # recursiva
 def vi(n):
   if n==1:
@@ -20,32 +22,61 @@ def vi_mem(n, mem = {1:0 , 2:1}):
 
 # iterativa
 def vi_ite(n):
-  n1 = 1
-  n2 = 0
-  counter = 3
-  
-  while counter<=n:
-    vi_corr = n1 + n2
-    n2 = n1
-    n1 = vi_corr
-    
-    counter += 1
-    
-  return vi_corr
+    if n == 1:
+        return 0
+    elif n == 2:
+        return 1
+
+    n1 = 0
+    n2 = 1
+    counter = 3
+
+    while counter <= n:
+        n_corrente = n1 + n2
+        n1 = n2
+        n2 = n_corrente
+
+        counter += 1
+
+    return n_corrente
+
 
 
 def calculate_fibonacci(n):
-    a, b = 0, 1
-    for _ in range(n):
-        a, b = b, a + b
-    return a
+  if n == 1:
+    return 0
+  elif n == 2:
+    return 1
+
+  a, b = 0, 1
+  for _ in range(n - 1):
+    a, b = b, a + b
+  return a
 
 
 
 n = int(input('Digite um numero para o calculo de Fibonacci: \n'))
-print('Esse é o calculo usando a iteração!')
+print('Esse é o calculo usando a memorização!')
+start_time = time.time()  # Marca o tempo de início
 print(vi_mem(n))
-print('Esse é o calculo usando a recursividade pura!')
+end_time = time.time()  # Marca o tempo de término
+execution_time = end_time - start_time  # Calcula o tempo total de execução
+print("Tempo de execução:", execution_time, "segundos")  # Exibe o tempo de execução
+print('Esse é o calculo usando a recursividade!')
+start_time = time.time()  # Marca o tempo de início
 print(vi(n))
-print('Esse é o calculo usando a recursividade com memorização!')
+end_time = time.time()  # Marca o tempo de término
+execution_time = end_time - start_time  # Calcula o tempo total de execução
+print("Tempo de execução:", execution_time, "segundos")  # Exibe o tempo de execução
+print('Esse é o calculo usando a iteração!')
+start_time = time.time()  # Marca o tempo de início
 print(vi_ite(n))
+end_time = time.time()  # Marca o tempo de término
+execution_time = end_time - start_time  # Calcula o tempo total de execução
+print("Tempo de execução:", execution_time, "segundos")  # Exibe o tempo de execução
+print('Esse é o calculo usando iteração sucinta!')
+start_time = time.time()  # Marca o tempo de início
+print(calculate_fibonacci(n))
+end_time = time.time()  # Marca o tempo de término
+execution_time = end_time - start_time  # Calcula o tempo total de execução
+print("Tempo de execução:", execution_time, "segundos")  # Exibe o tempo de execução
